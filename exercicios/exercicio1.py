@@ -43,17 +43,3 @@ class FileManager:
 # rename_file(old_name, new_name): Renomeia um arquivo de old_name para new_name.
 # file_exists(file_name): Verifica se o arquivo existe no diretório.
 # get_file_size(file_name): Retorna o tamanho do arquivo em bytes.
-
-
-class Calcularora:
-    def __init__(self,num1,num2):
-        self.num1 = num1
-        self.num2 = num2
-    
-    def somar(self):
-        resultado = self.num1 + self.num2
-        print(f"resultado da soma é {resultado}")
-
-
-calcularora = Calcularora(2,5)
-calcularora.somar()
