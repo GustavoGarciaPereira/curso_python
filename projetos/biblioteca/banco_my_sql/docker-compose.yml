@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: teste_db
+      MYSQL_USER: gustavo
+      MYSQL_PASSWORD: senha_gustavo
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql  # Persistência de dados
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro  # Script opcional de inicialização
+    restart: unless-stopped
