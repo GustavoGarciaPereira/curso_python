@@ -13,6 +13,6 @@ links úteis
 
 [aula_3_Exceções e Tratamento de Erros](/materia/aula_3.md)
 
-[aula_4_esumo: Estruturas de Dados Avançadas](/materia/aula_4.md)
+[aula_4_Resumo: Estruturas de Dados Avançadas](/materia/aula_4.md)
 
 [aula_5_Controle de Fluxo em Python](/materia/aula_5.md)
