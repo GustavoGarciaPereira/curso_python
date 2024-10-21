@@ -68,13 +68,19 @@ class Biblioteca:
         else:
             print(f"Livro com ID {id_livro} não encontrado.")
 
-    def listar_livros(self):
+    def listar_livros(self, stdscr):
+        stdscr.clear()  # Limpa a tela
         if not self.livros:
-            print("Nenhum livro na biblioteca.")
+            stdscr.addstr(0, 0, "Nenhum livro na biblioteca.")
         else:
-            print(f"self.livros = {self.livros}")
+            stdscr.addstr(0, 0, "Livros na biblioteca:")
+            linha = 2  # Começar a exibir os livros a partir da linha 2
             for livro in self.livros.values():
-                print(livro)
+                stdscr.addstr(linha, 0, str(livro))
+                linha += 1  # Mover para a próxima linha
+
+        stdscr.refresh()
+        stdscr.getch()  # Aguardar o usuário pressionar uma tecla para continuar
 
     # Métodos para gerenciar usuários
     def adicionar_usuario(self, usuario):
