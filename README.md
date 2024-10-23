@@ -24,3 +24,8 @@ links úteis
 [PensePython2e](https://penseallen.github.io/PensePython2e/)
 
 [python_tutorial](https://docs.python.org/pt-br/3.10/tutorial/)
+
+
+## Matéria banco de dados
+[Programação Dinâmica](https://www.youtube.com/watch?v=BRPUA0EgS4I&list=PL5TJqBvpXQv5n1N15kcK1m9oKJm_cv-m6)
+[Base de dados](https://basedosdados.org/dataset/fb38dbe8-03ce-46b4-a6b7-638ade03999c?table=b6df9e1c-cbcb-4dbd-893b-8645a51773e6)
