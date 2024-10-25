@@ -1,4 +1,7 @@
 -- Criação da Tabela Clientes
+CREATE DATABASE bar;
+USE bar;
+
 CREATE TABLE Clientes (
     ClienteID INT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
