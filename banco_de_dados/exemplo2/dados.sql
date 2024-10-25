@@ -164,6 +164,17 @@ INSERT INTO pedidos (comanda_id, item, quantidade, preco_unitario) VALUES
 (3, "seveja", 2, 11.0)
 
 
+
+SELECT GROUP_CONCAT(item) FROM pedidos GROUP BY(comanda_id);
+SELECT GROUP_CONCAT(item SEPARATOR ', ') AS lista_itens
+FROM pedidos
+WHERE item IS NOT NULL AND TRIM(item) <> ''
+GROUP BY(comanda_id);
+
+SELECT comanda_id, GROUP_CONCAT(item) AS itens, SUM(quantidade) AS total_quantidade, SUM(quantidade * preco_unitario) AS total_valor
+FROM pedidos
+GROUP BY comanda_id;
+
 drop Table pedidos;
 drop Table comandas;
 
