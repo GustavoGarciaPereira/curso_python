@@ -1,5 +1,6 @@
-CREATE DATABASE varejo;
-USE varejo;
+
+CREATE DATABASE bar;
+USE bar;
 
 
 CREATE TABLE clientes (
@@ -32,7 +33,7 @@ CREATE TABLE pedidos (
 INSERT INTO clientes (nome, telefone, email, cidade, estado) VALUES
 ('Alice Santos', '11988887777', 'alice@gmail.com', 'São Paulo', 'SP'),
 ('Bruno Silva', '21988887777', 'bruno@gmail.com', 'Rio de Janeiro', 'RJ'),
-('Carla Mendes', '31988887777', 'carla@gmail.com', 'Belo Horizonte', 'MG');
+('Carolina Mendes', '31988887777', 'carla@gmail.com', 'Belo Horizonte', 'MG');
 
 -- Inserindo comandas (cada cliente tem uma comanda)
 INSERT INTO comandas (cliente_id, data_comanda, status) VALUES
@@ -52,7 +53,71 @@ INSERT INTO pedidos (comanda_id, item, quantidade, preco_unitario) VALUES
 
 
 
-SELECT * from clientes;
+SELECT
+    *
+from
+    clientes
+WHERE
+    cliente_id = 3;
+
+SELECT
+    *
+from
+    pedidos;
+
+SELECT
+    *,
+    (SELECT nome  from clientes WHERE cliente_id = c.cliente_id) AS nome_cliente,
+    (SELECT email  from clientes WHERE cliente_id = c.cliente_id) AS email_cliente
+from
+    comandas c;
+
+
+SELECT 
+*
+from
+    comandas
+JOIN
+    clientes ON comandas.cliente_id = clientes.cliente_id
+
+
+
+
+
+
+select
+    cl.nome,
+    co.status,
+    pe.preco_unitario,
+    pe.item,
+    co.comanda_id
+from pedidos pe
+JOIN comandas co ON pe.comanda_id = co.comanda_id
+JOIN clientes cl ON cl.cliente_id = co.cliente_id
+ORDER BY(pe.preco_unitario) DESC
+;
+
+
+
+
+
+
+
+
+
+
+SELECT *
+from comandas
+JOIN clientes ON clientes.cliente_id = comandas.cliente_id;
+
+
+
+
+
+
+
+
+
 
 
 SELECT p.*,
@@ -76,8 +141,6 @@ FROM
     pedidos p
 Inner JOIN 
     comandas c ON p.comanda_id = c.comanda_id
-WHERE 
-    p.comanda_id = 3
 GROUP BY 
     c.comanda_id, c.status;
 
@@ -105,3 +168,7 @@ drop Table pedidos;
 drop Table comandas;
 
 drop Table clientes;
+
+
+DROP DATABASE bar;
+
