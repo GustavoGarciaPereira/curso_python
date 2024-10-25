@@ -50,50 +50,9 @@ INSERT INTO Pedidos (PedidoID, ClienteID, ProdutoID, DataPedido, Quantidade) VAL
 
 
 --Exercício 1: Listar os Pedidos com Detalhes dos Clientes e Produtos
-SELECT 
-    Pedidos.PedidoID,
-    Clientes.Nome AS NomeCliente,
-    Produtos.NomeProduto,
-    Pedidos.Quantidade,
-    Pedidos.DataPedido
-FROM 
-    Pedidos
-INNER JOIN 
-    Clientes ON Pedidos.ClienteID = Clientes.ClienteID
-INNER JOIN 
-    Produtos ON Pedidos.ProdutoID = Produtos.ProdutoID
-WHERE 
-    Clientes.ClienteID IS NOT NULL
-    AND Produtos.ProdutoID IS NOT NULL;
-
 
 -- Exercício 2: Encontrar Todos os Pedidos de um Cliente Específico
-SELECT 
-    Pedidos.PedidoID,
-    Produtos.NomeProduto,
-    Pedidos.Quantidade,
-    Pedidos.DataPedido
-FROM 
-    Pedidos
-INNER JOIN 
-    Produtos ON Pedidos.ProdutoID = Produtos.ProdutoID
-WHERE 
-    Pedidos.ClienteID = 1;
 
 
+-- Exercício 3: Listar Clientes que Compraram um Produto Específico
 
---  Consulta para verificar se o PedidoID 105 causará erro
-
-
-Exercício 3: Listar Clientes que Compraram um Produto Específico
-SELECT 
-    Clientes.Nome AS NomeCliente,
-    Pedidos.PedidoID,
-    Pedidos.Quantidade,
-    Pedidos.DataPedido
-FROM 
-    Pedidos
-INNER JOIN 
-    Clientes ON Pedidos.ClienteID = Clientes.ClienteID
-WHERE 
-    Pedidos.ProdutoID = 2;
