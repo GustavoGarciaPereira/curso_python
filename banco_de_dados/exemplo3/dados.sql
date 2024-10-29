@@ -44,10 +44,10 @@ CREATE TABLE Pedidos (
 
 -- Inserção de Dados na Tabela Pedidos
 INSERT INTO Pedidos (PedidoID, ClienteID, ProdutoID, DataPedido, Quantidade) VALUES
-(101, 1, 1, '2024-01-15', 2),
-(102, 2, 2, '2024-02-20', 1),
-(103, 1, 3, '2024-03-05', 3),
-(104, 3, 4, '2024-04-10', 1);
+(105, 1, 1, '2024-01-15', 2),
+(106, 2, 2, '2024-02-20', 1),
+(107, 1, 3, '2024-03-05', 3),
+(108, 3, 4, '2024-04-10', 1);
 -- O PedidoID 105 causará erro devido ao ClienteID inexistente
 -- (105, 5, 2, '2024-05-12', 2);
 
