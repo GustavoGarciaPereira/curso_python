@@ -1,4 +1,10 @@
+import mysql.connector
+from mysql.connector.errors import Error
+
+
 # Configuração da conexão
+
+
 config = {
     'host': 'localhost',
     'user': 'gustavo',
