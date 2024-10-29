@@ -29,3 +29,21 @@ links úteis
 ## Matéria banco de dados
 [Programação Dinâmica](https://www.youtube.com/watch?v=BRPUA0EgS4I&list=PL5TJqBvpXQv5n1N15kcK1m9oKJm_cv-m6)
 [Base de dados](https://basedosdados.org/dataset/fb38dbe8-03ce-46b4-a6b7-638ade03999c?table=b6df9e1c-cbcb-4dbd-893b-8645a51773e6)
+
+
+
+
+## comandos git:
+| Comando           | Descrição                                                                                     |
+|-------------------|-----------------------------------------------------------------------------------------------|
+| `git init`        | Inicializa um novo repositório Git no diretório atual.                                        |
+| `git add`         | Adiciona arquivos ou alterações ao staging area (área de preparação) para o próximo commit.   |
+| `git commit`      | Salva as mudanças no repositório local com uma mensagem descritiva.                           |
+| `git push`        | Envia os commits locais para um repositório remoto.                                           |
+| `git pull`        | Puxa e integra as atualizações de um repositório remoto para o repositório local.             |
+| `git clone`       | Cria uma cópia de um repositório remoto no diretório local.                                   |
+| `git branch`      | Cria, lista ou exclui branches no repositório.                                                |
+| `git checkout`    | Alterna entre branches ou restaura arquivos em um commit específico.                          |
+| `git remote add`  | Adiciona um repositório remoto ao projeto local, associado a um nome específico.              |
+| `git remote remove` | Remove um repositório remoto previamente adicionado.                                        |
+| `git fetch`       | Baixa as atualizações de um repositório remoto sem integrá-las ao repositório local.          |
