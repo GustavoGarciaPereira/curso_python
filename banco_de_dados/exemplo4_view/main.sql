@@ -1,4 +1,4 @@
-use varejo;
+use gustavo_teste;
 
 
 -- Criação da Tabela Clientes
