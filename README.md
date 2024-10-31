@@ -17,6 +17,7 @@ links úteis
 
 [aula_5_Controle de Fluxo em Python](/materia/aula_5.md)
 
+[aula_6_Interface grafica](/materia/aula_6.md)
 
 
 ## Matérial Python
