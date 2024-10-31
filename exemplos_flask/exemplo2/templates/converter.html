@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Currency Converter</title>
+    
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <form method="POST">
+        <input type="number" step="0.01" name="amount" placeholder="Amount in USD" required>
+        <button type="submit">Convert</button>
+    </form>
+    {% if result is not none %}
+        <p>Converted Amount: {{ result }} BRL</p>
+    {% endif %}
+</body>
+</html>
