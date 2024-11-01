@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Galeria de Fotos{% endblock %}
+{% block header %}Galeria de Fotos{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('index') }}">Voltar para Cadastro</a>
+    <div class="gallery-container">
+        {% for photo in photos %}
+            <div class="gallery-item">
+                <h2>{{ photo.name }}</h2>
+                <img src="{{ url_for('static', filename='uploads/' + photo['filepath'].split('/')[-1]) }}" alt="Foto de {{ photo.name }}">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

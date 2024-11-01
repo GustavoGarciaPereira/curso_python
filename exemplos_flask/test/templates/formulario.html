@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Imc</h2>
+    <form action="/" method="post">
+        <label for="idade">Idade</label>
+        <input type="number" name="idade" id="idade">
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" step="0.1" required>
+        
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" name="altura" step="0.1" required>
+        <br><br>
+
+        <label>Gênero:</label>
+        <input type="radio" id="homem" name="genero" value="homem" required>
+        <label for="homem">Homem</label>
+        <input type="radio" id="mulher" name="genero" value="mulher">
+        <label for="mulher">Mulher</label>
+        
+        
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

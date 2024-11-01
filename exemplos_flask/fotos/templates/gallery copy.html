@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Galeria de Fotos</h1>
+    <a href="{{ url_for('index') }}">Voltar para Cadastro</a>
+    <div>
+        {% for photo in photos %}
+            <div>
+                <h2>{{ photo.name }}</h2>
+                <img src="{{ url_for('static', filename='uploads/' + photo['filepath'].split('/')[-1]) }}" alt="Foto de {{ photo.name }}" width="150">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

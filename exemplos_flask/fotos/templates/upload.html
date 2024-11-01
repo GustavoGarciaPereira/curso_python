@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Upload de Foto{% endblock %}
+{% block header %}Cadastro de Nome e Foto{% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" required>
+        <br><br>
+        <label for="photo">Foto:</label>
+        <input type="file" name="photo" accept="image/*" required>
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}

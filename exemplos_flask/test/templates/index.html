@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Container Items</title>
+</head>
+<body>
+
+  <!-- O código JavaScript será carregado no final do corpo -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.createElement('div');
+      container.setAttribute('id', 'container');
+      document.body.appendChild(container);
+    
+      for (let i = 0; i < 5; i++) {
+        const item = document.createElement('div');
+        item.textContent = `Item ${i + 1}`;
+        container.appendChild(item);
+      }
+    
+      const items = document.querySelectorAll('#container > div');
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          item.style.color = 'red';
+          console.log(`Item ${index + 1} clicked`);
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>
