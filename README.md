@@ -32,8 +32,18 @@ links úteis
 
 [Base de dados](https://basedosdados.org/dataset/fb38dbe8-03ce-46b4-a6b7-638ade03999c?table=b6df9e1c-cbcb-4dbd-893b-8645a51773e6)
 
+## Matério de Flask
+[python-flask-immutablemultidict](https://www.geeksforgeeks.org/python-flask-immutablemultidict/)
 
+[Welcome to Flask’s documentation](https://flask.palletsprojects.com/en/stable/)
 
+[Flask Installation](https://flask.palletsprojects.com/en/stable/installation/)
+
+[Flask quickstart](https://flask.palletsprojects.com/en/stable/quickstart/)
+
+[Jinja Template: Part 1](https://medium.com/@aneesha161994/jinja-template-part-1-94944a2fdaad)
+
+[Jinja Template Part 2 :How to use Jinja template in docxtpl and flask ?](https://medium.com/@aneesha161994/jinja-template-part-2-how-to-use-jinja-template-44e5dcc8516f)
 
 ## comandos git:
 | Comando           | Descrição                                                                                     |
