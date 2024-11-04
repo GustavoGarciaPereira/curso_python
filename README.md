@@ -59,3 +59,15 @@ links úteis
 | `git remote add`  | Adiciona um repositório remoto ao projeto local, associado a um nome específico.              |
 | `git remote remove` | Remove um repositório remoto previamente adicionado.                                        |
 | `git fetch`       | Baixa as atualizações de um repositório remoto sem integrá-las ao repositório local.          |
+
+
+
+
+
+# Conteúdos para a vida!
+
+- [Naruhodo #251 - O que é a síndrome do impostor?](https://www.youtube.com/watch?v=tV2jAdJNg4Y)
+- [Naruhodo #259 - Por que as coisas parecem óbvias depois que passamos por elas? - Parte 1 de 2](https://www.youtube.com/watch?v=fsgAdq_iu-A)
+- [Naruhodo #328 - Existem "gatilhos mentais"?](https://www.youtube.com/watch?v=fxBQJlin8Z4)
+- [Naruhodo #366 - Por que temos ideias durante o banho?](https://www.youtube.com/watch?v=jYJUwNRZWHE&t=494s)
+- [Naruhodo #367 - Estamos ficando mais esquecidos do que já fomos?](https://www.youtube.com/watch?v=ouilklEqKAU)
