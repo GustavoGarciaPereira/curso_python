@@ -76,4 +76,3 @@ li a {
 li a:hover {
     text-decoration: underline;
 }
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">

@@ -74,4 +74,3 @@ p {
     font-weight: bold;
     color: #007bff;
 }
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
