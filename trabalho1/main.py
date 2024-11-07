@@ -41,3 +41,24 @@ def forms():
         return render_template("forms.html",dic = dic)
         #return redirect(url_for("main"), nome=nome)
     return render_template("forms.html", dic=dic)
+
+
+@app.route('/imc', methods=['GET', 'POST'])
+def imc():
+    imc = 0
+    if request.method == "POST":
+        nome = request.form.get('nome')
+        idade = request.form.get('idade')
+        peso = int(request.form.get('peso'))
+        altura = int(request.form.get('altura'))
+        sexo = request.form.get('sexo')
+        #IMC = Peso ÷ (Altura × Altura)
+        print(f"""
+            nome = {nome}
+            idade = {idade}
+            peso = {peso}
+            altura = {altura}
+            sexo = {sexo}""")
+        imc = peso / (altura ** 2)
+
+    return render_template("forms_imc.html", imc=imc)
