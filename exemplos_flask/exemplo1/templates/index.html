@@ -11,10 +11,10 @@
         <button type="submit">Add</button>
     </form>
     <ul>
+        
         {% for task in tasks %}
-        {{ task.id }}
-        {{ task.task }}
-            <li>{{  task.task }} <a href="/delete/{{ task.id }}">Delete</a></li>
+
+            <li>{{  task[1] }}  <a href="/delete/{{ task[0] }}">Delete</a></li>
 
         {% endfor %}
     </ul>

@@ -19,6 +19,7 @@ def generate_password(length=8, use_digits=True, use_upper=True, use_symbols=Tru
 @app.route('/', methods=['GET', 'POST'])
 def index():
     password = None
+    
     if request.method == 'POST':
         length = int(request.form.get('length', 8))
         use_digits = 'digits' in request.form
