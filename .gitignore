@@ -2,5 +2,8 @@ banco_de_dados/exemplo2/__pycache__/*
 projetos/biblioteca/banco_my_sql/asdf.sql
 
 */*/__pycache__/main.cpython-38.pyc
-/*/*/.vscode/
+
 interface_python/.vscode/settings.json
+exemplos_flask/p_e/app/__pycache__/*
+*/*/.vscode/*
+exemplos_flask/.vscode/settings.json

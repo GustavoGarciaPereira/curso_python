@@ -1,4 +1,4 @@
--- Active: 1731020124241@@127.0.0.1@3306
+
 create DATABASE saude;
 use saude;
 

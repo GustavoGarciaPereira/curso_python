@@ -1,7 +1,11 @@
 
+
 {% for pessoa in pessoas %}
-    <li>nome: {{ pessoa[1] }}</li>
-    <li>Idade: {{ pessoa[2] }}</li>
-    <li>IMC: {{ pessoa[6] }}</li>
+
+    <a href="/delete/{{ pessoa.id }}">delete</a>
+    <li>nome: {{ pessoa.nome }}</li>
+    <li>Idade: {{ pessoa.idade }}</li>
+    <li>IMC: {{ pessoa.imc }}</li>
+
     <p>-------------------------</p>
 {% endfor %}
