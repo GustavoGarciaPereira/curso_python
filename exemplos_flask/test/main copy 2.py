@@ -1,35 +1,5 @@
 # from flask import Flask, render_template, request
 
-# app  = Flask(__name__, template_folder='templ')
-
-# @app.route('/<int:num1>/<int:num2>/<string:sinal>', methods=['GET'])
-# def main(num1, num2, sinal):
-#     print(num1, num2, sinal)
-    
-#     if sinal == '+':
-#         return f"<h1>{num1} + {num2} = {num1+num2}</h1>"
-#     return "não concontrado"
-
-# @app.route('/')
-# def mai():
-#     return ""#render_template('index.html')
-
-
-# @app.route('/cadastro')
-# def cadastro():
-#     return render_template('cadastro.html')
-
-# @app.route('/listagem')
-# def listagem():
-#     return render_template('listagem.html')
-
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
-# from flask import Flask, render_template, request
-
 
 # app  = Flask(__name__)
 
@@ -62,7 +32,7 @@
 
 # from logging import Manager
 
-from flask import Flask, render_template_string, request, session, redirect, url_for, render_template, render_template_string
+from flask import Flask, render_template_string, request, session, redirect, url_for, render_template
 
 
 # Create the Flask application
@@ -117,7 +87,7 @@ def get_email():
 def delete_email():
     # Clear the email stored in the session object
     session.pop('email', default=None)
-    return render_template_string()
+    return '<h1>Session deleted!</h1>'
 
 
 @app.errorhandler(404)
@@ -127,3 +97,4 @@ def pagina_nao_encontrada(e):
 
 if __name__ == '__main__':
     app.run()
+    

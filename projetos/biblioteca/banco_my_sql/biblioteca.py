@@ -95,3 +95,7 @@ class Biblioteca:
         emprestimos = self.cursor.fetchall()
         for emprestimo in emprestimos:
             print(f"ID Livro: {emprestimo[1]}, ID Usuário: {emprestimo[2]}, Data Empréstimo: {emprestimo[3]}, Data Devolução: {emprestimo[4]}")
+
+
+
+

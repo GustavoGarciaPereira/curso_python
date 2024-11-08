@@ -23,6 +23,7 @@ app = Flask(__name__)
 #     swag['info']['version'] = "1.0"
 #     swag['info']['title'] = "My API"
 #     return jsonify(swag)
+from flask_sqlalchemy import SQLAlchemy
 import mysql.connector
 
 dic_senac = {
@@ -46,6 +47,34 @@ cnx = mysql.connector.connect(
     )
 
 
+app = Flask(__name__)
+from sqlalchemy import Column, Integer, String, Float, Enum, create_engine
+from flask_sqlalchemy import SQLAlchemy
+import enum
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root_password@127.0.0.1:3306/saude'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+# Definindo o enum para o campo 'sexo'
+class SexoEnum(enum.Enum):
+    homem = "homem"
+    mulher = "mulher"
+
+# Definindo o modelo da tabela de pessoas
+class Pessoa(db.Model):
+    __tablename__ = 'pessoas'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.String(255), nullable=False)
+    idade = db.Column(db.Integer, nullable=False)
+    peso = db.Column(db.Float, nullable=False)
+    altura = db.Column(db.Integer, nullable=False)
+    sexo = db.Column(db.Enum(SexoEnum), nullable=False)
+    imc = db.Column(db.Float, nullable=False)
+
+    def __repr__(self):
+        return f"<Pessoa(id={self.id}, nome='{self.nome}', idade={self.idade}, peso={self.peso}, altura={self.altura}, sexo='{self.sexo}', imc={self.imc})>"
 
 @app.route("/")
 def main():
@@ -97,13 +126,16 @@ def imc():
         altura = float(request.form.get('altura'))
         sexo = request.form.get('sexo')
         imc = peso / (altura ** 2)
-        sql = f"""
-        INSERT INTO pessoas (nome, idade, peso, altura, sexo, imc) 
-        VALUES ('{nome}', {idade}, {peso}, {altura},'{sexo}', {imc});
-        """
-        c = cnx.cursor()
-        row = c.execute(sql)
-        cnx.commit()
+        new_pessoa = Pessoa(
+            nome = nome,
+            idade = idade,
+            peso = peso,
+            altura = altura,
+            sexo = sexo,
+            imc = imc
+        )
+        db.session.add(new_pessoa)
+        db.session.commit()
         return redirect(url_for("liste_imc"))
         
     return render_template("forms_imc.html", imc=imc)
@@ -111,10 +143,8 @@ def imc():
 @app.route('/liste_imc')
 def liste_imc():
     
-    sql = "SELECT * FROM pessoas;"
-    c = cnx.cursor()
-    row = c.execute(sql)
-    pessoas = c.fetchall()
+    pessoas = Pessoa.query.all()
+    print(pessoas)
     if len(pessoas) <= 0:
         return redirect(url_for("imc"))
     return render_template("liste_imc.html",pessoas=pessoas)
