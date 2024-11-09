@@ -52,7 +52,7 @@ from sqlalchemy import Column, Integer, String, Float, Enum, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import enum
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root_password@127.0.0.1:3306/saude'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:senacrs@127.0.0.1:3306/saude'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -144,6 +144,8 @@ def imc():
 def liste_imc():
     
     pessoas = Pessoa.query.all()
+    
+    
     print(pessoas)
     if len(pessoas) <= 0:
         return redirect(url_for("imc"))
