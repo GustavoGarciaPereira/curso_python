@@ -45,6 +45,9 @@ links úteis
 
 [Jinja Template Part 2 :How to use Jinja template in docxtpl and flask ?](https://medium.com/@aneesha161994/jinja-template-part-2-how-to-use-jinja-template-44e5dcc8516f)
 
+[jinja2](https://jinja.palletsprojects.com/en/stable/templates/)
+
+
 ## comandos git:
 | Comando           | Descrição                                                                                     |
 |-------------------|-----------------------------------------------------------------------------------------------|

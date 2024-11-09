@@ -41,9 +41,7 @@ dic_casa = {
     "database":"saude"
 }
 
-cnx = mysql.connector.connect(
-        **dic_casa
-    )
+cnx = mysql.connector.connect(**dic_senac)
 
 
 
@@ -131,4 +129,4 @@ def delete_imc(id_pessoa):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=4000)

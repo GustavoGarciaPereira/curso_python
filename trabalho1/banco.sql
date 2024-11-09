@@ -17,8 +17,3 @@ CREATE TABLE pessoas (
 
 SELECT * FROM pessoas;
 
-INSERT INTO pessoas (nome, idade, peso, altura, sexo, imc) 
-VALUES 
-    ('João Silva', 30, 80.5, 175, 'homem', 26.3),
-    ('Maria Souza', 25, 65.0, 160, 'mulher', 25.4),
-    ('Carlos Oliveira', 40, 95.0, 180, 'homem', 29.3);
