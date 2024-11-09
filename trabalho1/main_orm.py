@@ -42,9 +42,7 @@ dic_casa = {
     "database":"saude"
 }
 
-cnx = mysql.connector.connect(
-        **dic_casa
-    )
+cnx = mysql.connector.connect(**dic_casa)
 
 
 app = Flask(__name__)
