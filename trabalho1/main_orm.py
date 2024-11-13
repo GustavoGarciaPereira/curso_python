@@ -1,28 +1,10 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-# from flask_swagger import swagger
-# from flask_swagger_ui import get_swaggerui_blueprint
-# from flask_cors import CORS  
+from flask_sqlalchemy import SQLAlchemy
+import enum
+
 
 app = Flask(__name__)
-# CORS(app)
-# # Swagger UI configuration
-# SWAGGER_URL = '/swagger'  # URL for accessing Swagger UI
-# API_URL = '/spec'         # URL for Swagger specification
-# swaggerui_blueprint = get_swaggerui_blueprint(
-#     SWAGGER_URL,
-#     API_URL,
-#     config={
-#         'app_name': "My API"
-#     }
-# )
-# app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
-# @app.route("/spec")
-# def spec():
-#     swag = swagger(app)
-#     swag['info']['version'] = "1.0"
-#     swag['info']['title'] = "My API"
-#     return jsonify(swag)
 from flask_sqlalchemy import SQLAlchemy
 import mysql.connector
 
@@ -43,15 +25,11 @@ dic_casa = {
 }
 
 cnx = mysql.connector.connect(
-        **dic_casa
+        **dic_senac
     )
 
 
 app = Flask(__name__)
-from sqlalchemy import Column, Integer, String, Float, Enum, create_engine
-from flask_sqlalchemy import SQLAlchemy
-import enum
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:senacrs@127.0.0.1:3306/saude'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -82,7 +60,7 @@ def main():
     Home route
     ---
     responses:
-      200:
+        200:
         description: Retorna uma mensagem de boas-vindas.
     """
     return redirect(url_for("liste_imc"))

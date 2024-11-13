@@ -69,6 +69,18 @@ links úteis
 [getbootstrap](https://getbootstrap.com/)
 
 
+## comandos virtualenv
+
+pip install virtualenv
+
+python -m virtualenv venv
+
+source venv/Scripts/activate
+
+pip freeze > requirements.txt
+
+deactivate
+
 # Conteúdos para a vida!
 
 - [Naruhodo #251 - O que é a síndrome do impostor?](https://www.youtube.com/watch?v=tV2jAdJNg4Y)
