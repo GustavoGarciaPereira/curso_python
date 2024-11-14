@@ -27,6 +27,10 @@ links úteis
 [python_tutorial](https://docs.python.org/pt-br/3.10/tutorial/)
 
 
+## Material django
+https://docs.djangoproject.com/en/5.1/topics/install/
+
+
 ## Matéria banco de dados
 [Programação Dinâmica](https://www.youtube.com/watch?v=BRPUA0EgS4I&list=PL5TJqBvpXQv5n1N15kcK1m9oKJm_cv-m6)
 
