@@ -75,15 +75,17 @@ https://docs.djangoproject.com/en/5.1/topics/install/
 
 ## comandos virtualenv
 
-pip install virtualenv
+| **Comando**                          | **Descrição**                                                                 |
+|--------------------------------------|-------------------------------------------------------------------------------|
+| `pip install virtualenv`             | Instala o pacote `virtualenv` para criar ambientes virtuais Python.          |
+| `python -m virtualenv <nome_venv>`   | Cria um novo ambiente virtual com o nome especificado (`<nome_venv>`).        |
+| `source <nome_venv>/Scripts/activate` (Windows) | Ativa o ambiente virtual no Windows.                                           |
+| `source <nome_venv>/bin/activate` (Linux/Mac)    | Ativa o ambiente virtual no Linux ou MacOS.                                     |
+| `deactivate`                         | Desativa o ambiente virtual ativo, retornando ao Python global.              |
+| `pip freeze > requirements.txt`      | Gera um arquivo `requirements.txt` com as dependências instaladas no ambiente virtual. |
+| `pip install -r requirements.txt`    | Instala as dependências listadas em um arquivo `requirements.txt`.            |
+| `rm -rf <nome_venv>`                 | Remove o ambiente virtual, excluindo sua pasta.                              |
 
-python -m virtualenv venv
-
-source venv/Scripts/activate
-
-pip freeze > requirements.txt
-
-deactivate
 
 
 ## Tabela comandos django
