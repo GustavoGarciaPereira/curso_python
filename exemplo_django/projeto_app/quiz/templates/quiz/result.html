@@ -1,0 +1,14 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado</title>
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}">
+</head>
+<body>
+    <h1>Resultado</h1>
+    <p>Você acertou {{ score }} de {{ total }} perguntas.</p>
+    <a href="/app_quiz/questao/">Tentar novamente</a>
+</body>
+</html>
