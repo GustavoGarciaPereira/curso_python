@@ -116,6 +116,10 @@ https://docs.djangoproject.com/en/5.1/topics/install/
 
 
 
+https://docs.djangoproject.com/en/5.1/ref/models/fields/
+
+
+
 # Conteúdos para a vida!
 
 - [Naruhodo #251 - O que é a síndrome do impostor?](https://www.youtube.com/watch?v=tV2jAdJNg4Y)
