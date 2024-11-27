@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <link rel="stylesheet" href="{% static 'details.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ produto.nome }}</h1>
+        <p>Preço: R$ {{ produto.preco }}</p>
+        <p>Estoque: {{ produto.estoque }}</p>
+        <p>Descrição: {{ produto.descricao }}</p>
+        <a href="{% url 'produto_list' %}">Voltar</a>
+    </div>
+</body>
+</html>

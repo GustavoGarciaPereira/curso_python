@@ -24,9 +24,13 @@ dic_casa = {
     "database":"saude"
 }
 
+<<<<<<< HEAD
+cnx = mysql.connector.connect(**dic_casa)
+=======
 cnx = mysql.connector.connect(
         **dic_senac
     )
+>>>>>>> 5e3b01fdc37315845c57721366ef416948b75605
 
 
 app = Flask(__name__)

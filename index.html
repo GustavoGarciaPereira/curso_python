@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example: Video Picture-in-Picture</title>
+</head>
+<body>
+  <h1>Picture-in-Picture Example</h1>
+  <p>Este exemplo usa um vídeo para demonstrar o modo PiP.</p>
+
+  <!-- Elemento de vídeo que será exibido em PiP -->
+  <video id="video" width="320" height="240" controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+  <!-- Botão para abrir o PiP -->
+  <button id="open-pip-btn">Abrir PiP</button>
+
+  <script>
+    const video = document.getElementById('video');
+    const openPiPButton = document.getElementById('open-pip-btn');
+
+    // Função para abrir o vídeo em modo PiP
+    openPiPButton.addEventListener('click', async () => {
+      try {
+        if (document.pictureInPictureEnabled && !video.disablePictureInPicture) {
+          // Verifica se o vídeo já está em PiP
+          if (document.pictureInPictureElement) {
+            await document.exitPictureInPicture();
+          } else {
+            await video.requestPictureInPicture();
+          }
+        } else {
+          alert('Picture-in-Picture não é suportado neste navegador.');
+        }
+      } catch (error) {
+        console.error('Erro ao ativar PiP:', error);
+      }
+    });
+  </script>
+</body>
+</html>
