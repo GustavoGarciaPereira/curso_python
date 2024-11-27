@@ -27,6 +27,10 @@ links úteis
 [python_tutorial](https://docs.python.org/pt-br/3.10/tutorial/)
 
 
+## Material django
+https://docs.djangoproject.com/en/5.1/topics/install/
+
+
 ## Matéria banco de dados
 [Programação Dinâmica](https://www.youtube.com/watch?v=BRPUA0EgS4I&list=PL5TJqBvpXQv5n1N15kcK1m9oKJm_cv-m6)
 
@@ -67,6 +71,53 @@ links úteis
 ## HTML e CSS
 
 [getbootstrap](https://getbootstrap.com/)
+
+
+## comandos virtualenv
+
+| **Comando**                          | **Descrição**                                                                 |
+|--------------------------------------|-------------------------------------------------------------------------------|
+| `pip install virtualenv`             | Instala o pacote `virtualenv` para criar ambientes virtuais Python.          |
+| `python -m virtualenv <nome_venv>`   | Cria um novo ambiente virtual com o nome especificado (`<nome_venv>`).        |
+| `source <nome_venv>/Scripts/activate` (Windows) | Ativa o ambiente virtual no Windows.                                           |
+| `source <nome_venv>/bin/activate` (Linux/Mac)    | Ativa o ambiente virtual no Linux ou MacOS.                                     |
+| `deactivate`                         | Desativa o ambiente virtual ativo, retornando ao Python global.              |
+| `pip freeze > requirements.txt`      | Gera um arquivo `requirements.txt` com as dependências instaladas no ambiente virtual. |
+| `pip install -r requirements.txt`    | Instala as dependências listadas em um arquivo `requirements.txt`.            |
+| `rm -rf <nome_venv>`                 | Remove o ambiente virtual, excluindo sua pasta.                              |
+
+
+
+## Tabela comandos django
+| **Comando**                  | **Usado com**  | **Descrição**                                                                                     |
+|------------------------------|----------------|-------------------------------------------------------------------------------------------------|
+| `startproject <nome>`        | `django-admin` | Cria um novo projeto Django na pasta especificada.                                              |
+| `startapp <nome>`            | `manage.py`    | Cria uma nova aplicação Django dentro do projeto.                                               |
+| `runserver [porta]`          | `manage.py`    | Inicia o servidor de desenvolvimento na porta padrão (8000) ou na especificada.                 |
+| `migrate`                    | `manage.py`    | Aplica as migrações ao banco de dados.                                                          |
+| `makemigrations [app]`       | `manage.py`    | Cria novas migrações baseadas nas alterações feitas nos modelos do app especificado.            |
+| `check`                      | `manage.py`    | Verifica o projeto em busca de problemas.                                                       |
+| `createsuperuser`            | `manage.py`    | Cria um superusuário para acessar o admin do Django.                                            |
+| `shell`                      | `manage.py`    | Abre um shell interativo do Django com acesso ao contexto do projeto.                          |
+| `dbshell`                    | `manage.py`    | Abre um shell interativo do banco de dados configurado no projeto.                              |
+| `showmigrations`             | `manage.py`    | Lista todas as migrações disponíveis e seu estado (aplicada ou pendente).                       |
+| `sqlmigrate <app> <migração>`| `manage.py`    | Mostra o SQL correspondente a uma migração específica.                                          |
+| `flush`                      | `manage.py`    | Remove todos os dados do banco de dados, mantendo as tabelas.                                   |
+| `inspectdb`                  | `manage.py`    | Gera modelos baseados no esquema do banco de dados atual (para engenharia reversa).             |
+| `collectstatic`              | `manage.py`    | Coleta todos os arquivos estáticos das aplicações para o diretório configurado no projeto.       |
+| `test [app]`                 | `manage.py`    | Executa os testes para o app especificado ou para todo o projeto.                               |
+| `changepassword <username>`  | `manage.py`    | Altera a senha de um usuário específico.                                                        |
+| `dumpdata [app]`             | `manage.py`    | Exporta os dados de um app ou do projeto inteiro em formato JSON.                               |
+| `loaddata <arquivo>`         | `manage.py`    | Importa dados de um arquivo JSON ou fixture para o banco de dados.                              |
+| `clearcache`                 | `manage.py`    | Limpa o cache do projeto (requer configuração).                                                 |
+| `compilemessages`            | `manage.py`    | Compila arquivos de tradução (.po) em arquivos binários (.mo).                                  |
+| `makemessages -l <lingua>`   | `manage.py`    | Gera arquivos de tradução para a linguagem especificada.                                         |
+
+
+
+
+https://docs.djangoproject.com/en/5.1/ref/models/fields/
+
 
 
 # Conteúdos para a vida!

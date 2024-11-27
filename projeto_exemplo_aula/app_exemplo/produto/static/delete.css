@@ -1,0 +1,55 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    color: #D9534F; /* Vermelho para enfatizar a ação de exclusão */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Texto explicativo */
+p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Botões */
+button, a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button {
+    background-color: #D9534F; /* Vermelho para "Excluir" */
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #C9302C;
+}
+
+a {
+    background-color: #5BC0DE; /* Azul para "Cancelar" */
+    color: white;
+}
+
+a:hover {
+    background-color: #31B0D5;
+}

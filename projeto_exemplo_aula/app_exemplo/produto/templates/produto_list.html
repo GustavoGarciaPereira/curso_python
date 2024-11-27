@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Produtos</h1>
+
+    <!-- Formulário de busca -->
+    <form method="get" action="{% url 'produto_list' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Buscar produtos">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Botões de ordenação -->
+    <div>
+        <a href="?order=nome" class="btn">Ordenar por Nome</a>
+        <a href="?order=preco" class="btn">Ordenar por Preço</a>
+    </div>
+
+    <!-- Link para adicionar produto -->
+    <a href="{% url 'produto_create' %}">Adicionar Produto</a>
+
+    <!-- Lista de produtos -->
+    <ul>
+        {% for produto in produtos %}
+            <li>
+                {{ produto.nome }} - R$ {{ produto.preco }}
+                <a href="{% url 'produto_detail' produto.pk %}">Detalhes</a>
+                <a href="{% url 'produto_edit' produto.pk %}">Editar</a>
+                <a href="{% url 'produto_delete' produto.pk %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

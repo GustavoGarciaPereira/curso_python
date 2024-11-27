@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="{% static 'quiz/style.css' %}">
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+            <div>
+                <h3>{{ question.question_text }}</h3>
+                {% for choice in question.choices.all %}
+                    <input type="radio" name="question_{{ question.id }}" value="{{ choice.id }}">
+                    {{ choice.choice_text }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
