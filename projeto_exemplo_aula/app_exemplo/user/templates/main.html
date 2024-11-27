@@ -1,1 +1,21 @@
+{% load static %}
 <h1>Exemplo</h1>
+<link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
+<div class="cards-container">
+    {% for i in produto %}
+        <div class="card">
+            <img src="https://rockcontent.com/br/wp-content/uploads/sites/2/2018/01/Descri%C3%A7%C3%A3o-de-produto-no-e-commerce.png" alt="Card Image 1">
+            <div class="container">
+                <h4><b>{{i.nome}}</b></h4>
+                <p>{{i.descricao}}</p>
+                <p>R${{ i.preco}}</p>
+            </div>
+        </div>
+
+        
+            
+    {% endfor %}
+</div>
+
+
+

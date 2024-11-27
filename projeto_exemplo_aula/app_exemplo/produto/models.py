@@ -8,4 +8,4 @@ class Produto(models.Model):
     descricao = models.TextField()
 
     def __str__(self):
-        return f"{self.nome} - {self.preco} - {self.estoque} - {self.descricao}"
+        return f"{self.nome} - R${self.preco} - {self.estoque}"

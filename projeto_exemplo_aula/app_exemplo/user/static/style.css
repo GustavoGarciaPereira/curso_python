@@ -1,0 +1,50 @@
+/* Container principal para centralizar os cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem linha em telas menores */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    gap: 20px; /* Espaçamento entre os cards */
+    padding: 20px;
+}
+
+/* Estilo geral para os cards */
+.card {
+    flex: 0 1 calc(33.333% - 20px); /* Três cards por linha com espaçamento */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Efeito de sombra padrão */
+    transition: box-shadow 0.3s ease; /* Suavização da transição */
+    border-radius: 5px; /* Cantos arredondados */
+    overflow: hidden; /* Garante que conteúdo extra seja ocultado */
+    background: #fff;
+}
+
+/* Responsividade: Ajusta para duas colunas em telas médias */
+@media (max-width: 768px) {
+    .card {
+        flex: 0 1 calc(50% - 20px); /* Dois cards por linha */
+    }
+}
+
+/* Responsividade: Ajusta para uma coluna em telas pequenas */
+@media (max-width: 480px) {
+    .card {
+        flex: 0 1 100%; /* Um card por linha */
+    }
+}
+
+/* Efeito de sombra mais profundo ao passar o mouse */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Padding interno para o conteúdo do card */
+.container {
+    padding: 16px;
+}
+
+/* Estilo para imagens no card */
+.card img {
+    display: block; /* Remove espaço abaixo da imagem */
+    border-radius: 5px 5px 0 0; /* Cantos arredondados apenas no topo */
+    width: 100%; /* Garante que a imagem preencha o card */
+    height: auto; /* Mantém a proporção */
+}
