@@ -43,7 +43,7 @@ form button:hover {
 }
 
 /* Link de adicionar produto */
-a[href*="produto_create"] {
+a.btn-adicionar {
     display: inline-block;
     margin-bottom: 20px;
     padding: 10px 20px;
@@ -54,7 +54,7 @@ a[href*="produto_create"] {
     font-weight: bold;
 }
 
-a[href*="produto_create"]:hover {
+a.btn-adicionar:hover {
     background-color: #45a049;
 }
 
@@ -64,7 +64,7 @@ ul {
     padding: 0;
 }
 
-ul li {
+ul li.produto-container {
     background-color: #fff;
     margin: 10px 0;
     padding: 15px;
@@ -76,33 +76,33 @@ ul li {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Links dentro da lista */
-ul li a {
-    margin-left: 10px;
-    color: #4CAF50;
+.produto-info {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Botões de ação */
+.botao-container {
+    display: flex;
+    gap: 10px;
+}
+
+.botao-container .btn-acao {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
     text-decoration: none;
+    border-radius: 5px;
     font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-ul li a:hover {
-    text-decoration: underline;
+.botao-container .btn-acao:hover {
+    background-color: #45a049;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-    form input[type="text"] {
-        width: 200px;
-    }
-
-    ul li {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    ul li a {
-        margin: 5px 0 0 0;
-    }
-}
 /* Botões de ordenação */
 div a.btn {
     display: inline-block;
@@ -118,4 +118,20 @@ div a.btn {
 
 div a.btn:hover {
     background-color: #45a049;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    form input[type="text"] {
+        width: 200px;
+    }
+
+    ul li.produto-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .botao-container {
+        margin-top: 10px;
+    }
 }

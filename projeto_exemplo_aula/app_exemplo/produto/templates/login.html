@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Estilo do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Cor de fundo suave */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container principal */
+        form {
+            background-color: #ffffff; /* Fundo branco */
+            border-radius: 8px; /* Cantos arredondados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            color: #333333; /* Cor do título */
+            margin-bottom: 20px;
+        }
+
+        /* Input fields */
+        input[type="text"], input[type="password"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Botão */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #45a049; /* Azul */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        /* Texto de erro */
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Entrar</button>
+    </form>
+</body>
+</html>

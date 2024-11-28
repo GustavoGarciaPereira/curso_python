@@ -1,5 +1,13 @@
 {% load static %}
 
+{% if user.is_authenticated %}
+    <p>Bem-vindo, {{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,16 +32,20 @@
     </div>
 
     <!-- Link para adicionar produto -->
-    <a href="{% url 'produto_create' %}">Adicionar Produto</a>
+    <a href="{% url 'produto_create' %}" class="btn-adicionar">Adicionar Produto</a>
 
     <!-- Lista de produtos -->
     <ul>
         {% for produto in produtos %}
-            <li>
-                {{ produto.nome }} - R$ {{ produto.preco }}
-                <a href="{% url 'produto_detail' produto.pk %}">Detalhes</a>
-                <a href="{% url 'produto_edit' produto.pk %}">Editar</a>
-                <a href="{% url 'produto_delete' produto.pk %}">Excluir</a>
+            <li class="produto-container">
+                <span class="produto-info">
+                    {{ produto.nome }} - R$ {{ produto.preco }}
+                </span>
+                <div class="botao-container">
+                    <a href="{% url 'produto_detail' produto.pk %}" class="btn-acao">Detalhes</a>
+                    <a href="{% url 'produto_edit' produto.pk %}" class="btn-acao">Editar</a>
+                    <a href="{% url 'produto_delete' produto.pk %}" class="btn-acao">Excluir</a>
+                </div>
             </li>
         {% endfor %}
     </ul>
