@@ -17,7 +17,7 @@ def is_admin(user):
     return user.is_authenticated and user.is_superuser  # Garante que o usuário está autenticado
 
 
-@login_required
+
 def produto_list(request):
     query = request.GET.get('q', '')  # Obter valor da busca
     order = request.GET.get('order', '')  # Obter parâmetro de ordenação
@@ -36,6 +36,7 @@ def produto_list(request):
     return render(request, 'produto_list.html', {'produtos': produtos, 'query': query})
 
 # Detalhar produto
+@login_required
 def produto_detail(request, pk):
     produto = get_object_or_404(Produto, pk=pk)
     return render(request, 'produto_detail.html', {'produto': produto})
@@ -46,7 +47,7 @@ def produto_create(request):
         form = ProdutoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('produto_list')
+            return redirect('produto_create')
     else:
         form = ProdutoForm()
     return render(request, 'produto_form.html', {'form': form})
@@ -92,6 +93,4 @@ class CustomLoginView(LoginView):
     template_name = 'login.html'
     redirect_authenticated_user = True  # Redireciona usuários logados para a página inicial
     success_url = reverse_lazy('produto_list')  # Página para onde o usuário será redirecionado após login
-
-
 
