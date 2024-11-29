@@ -7,3 +7,4 @@ interface_python/.vscode/settings.json
 exemplos_flask/p_e/app/__pycache__/*
 */*/.vscode/*
 exemplos_flask/.vscode/settings.json
+*/*/db.sqlite3
