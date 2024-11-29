@@ -8,6 +8,15 @@
 {% endif %}
 
 
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,15 +45,17 @@
 
     <!-- Lista de produtos -->
     <ul>
-        {% for produto in produtos %}
+        {% for item in produtos %}
             <li class="produto-container">
                 <span class="produto-info">
-                    {{ produto.nome }} - R$ {{ produto.preco }}
+                    {{ item.produto.nome }} - R$ {{ item.produto.preco }}<br>
+                    Frete: R$ {{ item.frete }}<br>
+                    Valor Total: R$ {{ item.valor_total }}
                 </span>
                 <div class="botao-container">
-                    <a href="{% url 'produto_detail' produto.pk %}" class="btn-acao">Detalhes</a>
-                    <a href="{% url 'produto_edit' produto.pk %}" class="btn-acao">Editar</a>
-                    <a href="{% url 'produto_delete' produto.pk %}" class="btn-acao">Excluir</a>
+                    <a href="{% url 'produto_detail' item.produto.pk %}" class="btn-acao">Detalhes</a>
+                    <a href="{% url 'produto_edit' item.produto.pk %}" class="btn-acao">Editar</a>
+                    <a href="{% url 'produto_delete' item.produto.pk %}" class="btn-acao">Excluir</a>
                 </div>
             </li>
         {% endfor %}

@@ -1,55 +1,69 @@
-/* Estilo geral */
+/* Geral */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
+    margin: 0;
     background-color: #f9f9f9;
     color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container da página de deletar */
+.delete-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
     text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Título */
-h1 {
-    color: #D9534F; /* Vermelho para enfatizar a ação de exclusão */
-    font-size: 2.5em;
+.delete-container h1 {
+    color: #d9534f; /* Vermelho para destacar a ação */
     margin-bottom: 20px;
 }
 
 /* Texto explicativo */
-p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    line-height: 1.6;
+.delete-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
-/* Botões */
-button, a {
+/* Botão de desativar */
+.btn-delete {
     display: inline-block;
+    background-color: #d9534f; /* Vermelho para ação de exclusão */
+    color: white;
     padding: 10px 20px;
-    font-size: 1em;
+    border: none;
     border-radius: 5px;
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button {
-    background-color: #D9534F; /* Vermelho para "Excluir" */
+.btn-delete:hover {
+    background-color: #c9302c; /* Vermelho mais escuro no hover */
+}
+
+/* Botão de cancelar */
+.btn-cancel {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #5bc0de; /* Azul para ação de cancelar */
     color: white;
-    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #C9302C;
-}
-
-a {
-    background-color: #5BC0DE; /* Azul para "Cancelar" */
-    color: white;
-}
-
-a:hover {
-    background-color: #31B0D5;
+.btn-cancel:hover {
+    background-color: #31b0d5; /* Azul mais escuro no hover */
 }
