@@ -18,6 +18,11 @@ def is_admin(user):
 
 
 
+from django.shortcuts import render
+from .models import Produto
+from .services import calcular_frete  # Simula cálculo de frete (pode ser implementado como no exemplo anterior)
+
+@login_required
 def produto_list(request):
     query = request.GET.get('q', '')  # Obter valor da busca
     order = request.GET.get('order', '')  # Obter parâmetro de ordenação
@@ -33,7 +38,20 @@ def produto_list(request):
     elif order == 'preco':
         produtos = produtos.order_by('preco')
 
-    return render(request, 'produto_list.html', {'produtos': produtos, 'query': query})
+    # Adicionar frete ao contexto
+    produtos_com_frete = []
+    for produto in produtos:
+        # Simula o cálculo de frete (você pode integrar com uma API real)
+        frete = calcular_frete("01001-000", "02002-000", peso=produto.estoque, comprimento=20, altura=10, largura=15)
+        valor_total = produto.preco + frete.get('valor', 0)  # Adiciona o frete ao preço
+        produtos_com_frete.append({
+            "produto": produto,
+            "frete": frete.get('valor', 0),
+            "valor_total": valor_total,
+        })
+
+    return render(request, 'produto_list.html', {'produtos': produtos_com_frete, 'query': query})
+
 
 # Detalhar produto
 @login_required
@@ -75,11 +93,14 @@ def produto_edit(request, pk):
 #         return redirect('produto_list')
 #     return render(request, 'produto_confirm_delete.html', {'produto': produto})
 
+
+from django.contrib import messages
 def produto_delete(request, pk):
     produto = get_object_or_404(Produto, pk=pk)
     if request.method == "POST":
         produto.ativo = False  # Desativar o produto
         produto.save()  # Salvar a alteração no banco de dados
+        messages.success(request, f"Produto '{produto.nome}' foi desativado.")
         return redirect('produto_list')
     return render(request, 'produto_confirm_delete.html', {'produto': produto})
 
@@ -94,3 +115,32 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True  # Redireciona usuários logados para a página inicial
     success_url = reverse_lazy('produto_list')  # Página para onde o usuário será redirecionado após login
 
+<<<<<<< HEAD
+=======
+
+
+from django.http import JsonResponse
+from .services import calcular_frete
+
+def consulta_frete(request):
+    """
+    View para calcular o frete com base nos dados fornecidos.
+
+    Returns:
+        JsonResponse: Resultado do cálculo do frete ou mensagem de erro.
+    """
+    if request.method == "POST":
+        # Dados de exemplo para consulta
+        cep_origem = "01001-000"  # Exemplo fixo de CEP de origem
+        cep_destino = request.POST.get("cep_destino", "01002-000")
+        peso = float(request.POST.get("peso", 1))
+        comprimento = float(request.POST.get("comprimento", 20))
+        altura = float(request.POST.get("altura", 10))
+        largura = float(request.POST.get("largura", 15))
+
+        # Chamada ao serviço de API
+        resultado = calcular_frete(cep_origem, cep_destino, peso, comprimento, altura, largura)
+        return JsonResponse(resultado)
+
+    return JsonResponse({"erro": "Método não permitido"}, status=405)
+>>>>>>> 55bd764f428283d226a7a250ed327705faf089fa
