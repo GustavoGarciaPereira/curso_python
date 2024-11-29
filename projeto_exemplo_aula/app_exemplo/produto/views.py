@@ -115,8 +115,6 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True  # Redireciona usuários logados para a página inicial
     success_url = reverse_lazy('produto_list')  # Página para onde o usuário será redirecionado após login
 
-<<<<<<< HEAD
-=======
 
 
 from django.http import JsonResponse
@@ -143,4 +141,3 @@ def consulta_frete(request):
         return JsonResponse(resultado)
 
     return JsonResponse({"erro": "Método não permitido"}, status=405)
->>>>>>> 55bd764f428283d226a7a250ed327705faf089fa
