@@ -44,3 +44,87 @@ def calcular_frete(cep_origem, cep_destino, peso, comprimento, altura, largura, 
         # Retorna um valor aleatório entre 20 e 100 em caso de erro
         valor_randomico = random.uniform(20, 100)
         return {"valor": round(Decimal(valor_randomico),2), "erro": f"Erro ao consultar frete: {e}"}
+
+
+
+def servico_ia_tags(nome_produto, descricao_produto):
+    # Endpoint da API
+    url = "https://api.perplexity.ai/chat/completions"
+
+    # Substitua pelo seu token de autorização
+    token = "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"
+
+    # Dados do produto
+    # nome_produto = "Notebook XYZ"
+    # descricao_produto = "Notebook de alto desempenho com processador Intel Core i7, 16GB de RAM, SSD de 512GB e tela Full HD de 15,6 polegadas."
+
+    # Payload ajustado para gerar tags baseadas no texto do produto
+    payload = {
+        "model": "llama-3.1-sonar-small-128k-online",  # Certifique-se de que o modelo seja o mais adequado
+        "messages": [
+            {
+                "role": "system",
+                "content": "Generate concise and relevant tags for projects based on the given product description."
+            },
+            {
+                "role": "user",
+                "content": f"Product Name: {nome_produto}\nDescription: {descricao_produto}\n\nGenerate relevant project tags."
+            }
+        ],
+        "max_tokens": 50,
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "search_domain_filter": [],
+        "return_images": False,
+        "return_related_questions": False,
+        "search_recency_filter": "month",
+        "top_k": 0,
+        "stream": False,
+        "presence_penalty": 0,
+        "frequency_penalty": 1
+    }
+
+    # Cabeçalhos
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+
+    # Chamada para a API
+    response = requests.post(url, json=payload, headers=headers)
+    if response.status_code == 200:
+        content = response.json().get("choices", [{}])[0].get("message", {}).get("content", "")
+        
+        # Processar a resposta para obter uma lista de tags limpas
+        tags = content.split("\n")  # Quebra por linhas
+        tags = [
+            tag.lstrip("- 1234567890.").strip("**").strip()  # Remove prefixos como "-", números e "**"
+            for tag in tags if tag.strip()
+        ]
+        return tags[1:]
+    return []
+
+
+
+# from produto.models import Produto
+
+# import json
+
+# produto = Produto.objects.get(id=16)
+
+# for produto in produtos:
+#     if isinstance(produto.tags, str):
+#         try:
+#             # Processar string para extrair as tags
+#             tags = produto.tags.split("\n")
+#             tags = [tag.lstrip("1234567890. ").strip("**").strip() for tag in tags if tag.strip()]
+#             produto.tags = tags
+#             produto.save()
+#         except Exception as e:
+#             print(f"Erro ao processar produto {produto.id}: {e}")
+
+
+# tags = produto.tags[0].split("\n")
+# tags = [tag.lstrip("1234567890. ").strip("**").strip() for tag in tags if tag.strip()]
+# produto.tags = tags
+# produto.save()

@@ -8,3 +8,7 @@ exemplos_flask/p_e/app/__pycache__/*
 */*/.vscode/*
 exemplos_flask/.vscode/settings.json
 */*/db.sqlite3
+*/*/*/__pycache__/models.cpython-38.pyc
+projeto_exemplo_aula/app_exemplo/produto/__pycache__/models.cpython-38.pyc
+projeto_exemplo_aula/app_exemplo/produto/__pycache__/services.cpython-38.pyc
+projeto_exemplo_aula/app_exemplo/produto/__pycache__/views.cpython-38.pyc

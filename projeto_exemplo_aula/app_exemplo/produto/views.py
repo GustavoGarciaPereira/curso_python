@@ -20,7 +20,7 @@ def is_admin(user):
 
 from django.shortcuts import render
 from .models import Produto
-from .services import calcular_frete  # Simula cálculo de frete (pode ser implementado como no exemplo anterior)
+from .services import calcular_frete, servico_ia_tags  # Simula cálculo de frete (pode ser implementado como no exemplo anterior)
 
 @login_required
 def produto_list(request):
@@ -63,7 +63,12 @@ def produto_create(request):
     if request.method == "POST":
         form = ProdutoForm(request.POST)
         if form.is_valid():
-            form.save()
+            produto = form.save(commit=False)
+            # Gerar tags com base nos dados do formulário
+            nome_produto = produto.nome
+            descricao_produto = produto.descricao
+            produto.tags = servico_ia_tags(nome_produto, descricao_produto)
+            produto.save()
             return redirect('produto_list')
     else:
         form = ProdutoForm()
