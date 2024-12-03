@@ -22,7 +22,7 @@ from django.shortcuts import render
 from .models import Produto
 from .services import calcular_frete  # Simula cálculo de frete (pode ser implementado como no exemplo anterior)
 
-@login_required
+
 def produto_list(request):
     query = request.GET.get('q', '')  # Obter valor da busca
     order = request.GET.get('order', '')  # Obter parâmetro de ordenação
