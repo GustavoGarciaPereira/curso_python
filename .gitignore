@@ -12,3 +12,6 @@ exemplos_flask/.vscode/settings.json
 projeto_exemplo_aula/app_exemplo/produto/__pycache__/models.cpython-38.pyc
 projeto_exemplo_aula/app_exemplo/produto/__pycache__/services.cpython-38.pyc
 projeto_exemplo_aula/app_exemplo/produto/__pycache__/views.cpython-38.pyc
+
+projeto_exemplo_aula/app_exemplo/.env
+projeto_exemplo_aula/app_exemplo/.env
