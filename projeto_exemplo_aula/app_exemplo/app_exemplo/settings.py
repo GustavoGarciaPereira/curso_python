@@ -15,7 +15,7 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print("gustavo", config('NOME'))
+print("gustavo", config('NOME',default='fulano'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -87,13 +87,13 @@ WSGI_APPLICATION = 'app_exemplo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Usando o backend MySQL
-        'NAME': 'produtos',                  # Substitua pelo nome do seu banco de dados
-        'USER': 'root',                       # Usuário do MySQL
-        'PASSWORD': 'senacrs',                       # Senha do MySQL (adicione a senha se existir)
-        'HOST': '127.0.0.1',                  # Endereço do servidor MySQL
-        'PORT': '3306',                       # Porta padrão do MySQL
-    }
+            'ENGINE':config('ENGINE'),
+            'NAME':config('NAME'),
+            'USER':config('USER'),
+            'PASSWORD':config('PASSWORD'),
+            'HOST':config('HOST', default='127.0.0.1'),
+            'PORT':config('PORT', default='3306'),
+        }
 }
 
 

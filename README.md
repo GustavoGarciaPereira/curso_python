@@ -117,10 +117,14 @@ https://docs.djangoproject.com/en/5.1/topics/install/
 
 
 https://docs.djangoproject.com/en/5.1/ref/models/fields/
+
+
 https://learnwagtail.com/tutorials/setting-django-shell-shell-plus-and-ipython/
 
 https://www.freecodecamp.org/
 
+
+https://pypi.org/project/python-decouple/
 
 
 

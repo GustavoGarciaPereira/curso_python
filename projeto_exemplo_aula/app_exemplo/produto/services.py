@@ -49,7 +49,8 @@ def calcular_frete(cep_origem, cep_destino, peso, comprimento, altura, largura, 
 
 def servico_ia_tags(nome_produto, descricao_produto):
     # Endpoint da API
-    url = "https://api.perplexity.ai/chat/completions"
+    from decouple import config
+    url = config('URL_IA')
 
     # Substitua pelo seu token de autorização
     token = "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"
