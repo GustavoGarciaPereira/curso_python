@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'produto',
     'django_extensions',
     'produto_listagem',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -78,23 +79,23 @@ WSGI_APPLICATION = 'app_exemplo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-            'ENGINE':config('ENGINE'),
-            'NAME':config('NAME'),
-            'USER':config('USER'),
-            'PASSWORD':config('PASSWORD'),
-            'HOST':config('HOST', default='127.0.0.1'),
-            'PORT':config('PORT', default='3306'),
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Usando o backend MySQL
+#         'NAME': 'produtos',                  # Substitua pelo nome do seu banco de dados
+#         'USER': 'root',                       # Usuário do MySQL
+#         'PASSWORD': 'senacrs',                       # Senha do MySQL (adicione a senha se existir)
+#         'HOST': '127.0.0.1',                  # Endereço do servidor MySQL
+#         'PORT': '3306',                       # Porta padrão do MySQL
+#     }
+# }
 
 
 # Password validation
