@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .post-meta {
+            text-align: center;
+            color: #555555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .comments {
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button, a {
+            width: 100%;
+            padding: 10px;
+            background-color: #45a049;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        button:hover, a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <p class="post-meta">Criado por {{ post.author }} em {{ post.created_at }}</p>
+        <p>{{ post.content }}</p>
+
+        <h2>Comentários</h2>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    <strong>{{ comment.author }}:</strong>
+                    <p>{{ comment.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'add_comment' post.pk %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add Comment</button>
+            </form>
+        {% else %}
+            <p><a href="{% url 'login' %}">Login</a> to add a comment.</p>
+        {% endif %}
+
+        {% if user == post.author or user.is_superuser %}
+            <form method="post" action="{% url 'delete_post' post.pk %}">
+                {% csrf_token %}
+                <button type="submit" style="margin-top: 10px;">Delete Post</button>
+            </form>
+        {% endif %}
+        <a href="{% url 'post_list' %}" style="padding: 10px 10px 10px 10px; width: 97%;">Retorna Feed</a>
+        
+    </div>
+</body>
+</html>
