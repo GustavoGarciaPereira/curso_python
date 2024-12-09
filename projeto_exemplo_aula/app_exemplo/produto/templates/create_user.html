@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Usuário</title>
+    <style>
+        /* Estilo do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Cor de fundo suave */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container principal */
+        form {
+            background-color: #ffffff; /* Fundo branco */
+            border-radius: 8px; /* Cantos arredondados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            color: #333333; /* Cor do título */
+            margin-bottom: 20px;
+        }
+
+        /* Input fields */
+        input[type="email"], input[type="text"], input[type="password"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Botão */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #45a049; /* Verde */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        /* Texto de erro */
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        /* Mensagens de validação */
+        .validation-messages {
+            font-size: 14px;
+            color: #333;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .validation-messages li {
+            list-style: none;
+            margin: 5px 0;
+        }
+
+        .validation-messages .valid {
+            color: green;
+        }
+
+        .validation-messages .invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h1>Criar Usuário</h1>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% csrf_token %}
+        <p>
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </p>
+        <p>
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </p>
+        <p>
+            <label for="id_password1">Senha:</label>
+            {{ form.password1 }}
+        </p>
+        <!-- Contêiner para mensagens de validação da senha -->
+        <ul id="password-validation" class="validation-messages">
+            <li id="length" class="invalid">Sua senha deve conter pelo menos 8 caracteres.</li>
+            <li id="common" class="invalid">Sua senha não pode ser uma senha comumente usada.</li>
+            <li id="numeric" class="invalid">Sua senha não pode ser inteiramente numérica.</li>
+            <li id="similar" class="invalid">Sua senha não pode ser muito semelhante às suas outras informações pessoais.</li>
+        </ul>
+        <p>
+            <label for="id_password2">Confirmar Senha:</label>
+            {{ form.password2 }}
+        </p>
+        <button type="submit">Criar</button>
+    </form>
+
+    <script>
+        // Referência aos campos relevantes
+        const passwordField = document.querySelector('input[name="password1"]');
+        const usernameField = document.querySelector('input[name="username"]');
+        const validationMessages = {
+            length: document.getElementById('length'),
+            common: document.getElementById('common'),
+            numeric: document.getElementById('numeric'),
+            similar: document.getElementById('similar')
+        };
+
+        // Lista de senhas comumente usadas (exemplo simplificado)
+        const commonPasswords = [
+            "123456",
+            "password",
+            "123456789",
+            "12345678",
+            "12345",
+            "111111",
+            "1234567",
+            "sunshine",
+            "qwerty",
+            "iloveyou",
+            "princess",
+            "admin",
+            "welcome",
+            "666666",
+            "abc123",
+            "football",
+            "123123",
+            "monkey",
+            "654321",
+            "!@#$%^&*"
+        ];
+
+        // Função para verificar se a senha é semelhante ao username
+        function isPasswordSimilar(password, username) {
+            if (!username) return true; // Se não houver username, ignore
+            return password.toLowerCase().includes(username.toLowerCase());
+        }
+
+        // Função para atualizar as mensagens de validação
+        function updateValidationMessages() {
+            const password = passwordField.value;
+            const username = usernameField.value;
+
+            // Validação 1: Pelo menos 8 caracteres
+            if (password.length >= 8) {
+                validationMessages.length.classList.remove('invalid');
+                validationMessages.length.classList.add('valid');
+            } else {
+                validationMessages.length.classList.remove('valid');
+                validationMessages.length.classList.add('invalid');
+            }
+
+            // Validação 2: Não é uma senha comumente usada
+            if (!commonPasswords.includes(password.toLowerCase())) {
+                validationMessages.common.classList.remove('invalid');
+                validationMessages.common.classList.add('valid');
+            } else {
+                validationMessages.common.classList.remove('valid');
+                validationMessages.common.classList.add('invalid');
+            }
+
+            // Validação 3: Não é inteiramente numérica
+            if (!/^\d+$/.test(password)) {
+                validationMessages.numeric.classList.remove('invalid');
+                validationMessages.numeric.classList.add('valid');
+            } else {
+                validationMessages.numeric.classList.remove('valid');
+                validationMessages.numeric.classList.add('invalid');
+            }
+
+            // Validação 4: Não é muito semelhante às informações pessoais (ex: username)
+            if (!isPasswordSimilar(password, username)) {
+                validationMessages.similar.classList.remove('invalid');
+                validationMessages.similar.classList.add('valid');
+            } else {
+                validationMessages.similar.classList.remove('valid');
+                validationMessages.similar.classList.add('invalid');
+            }
+        }
+
+        // Adicionar event listeners aos campos relevantes
+        passwordField.addEventListener('input', updateValidationMessages);
+        usernameField.addEventListener('input', updateValidationMessages); // Para atualizar a similaridade se o username for alterado
+    </script>
+</body>
+</html>

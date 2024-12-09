@@ -146,3 +146,21 @@ def consulta_frete(request):
         return JsonResponse(resultado)
 
     return JsonResponse({"erro": "Método não permitido"}, status=405)
+
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import CustomUserCreationForm
+
+def create_user(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Usuário criado com sucesso!')
+            return redirect('produto_list')  # Ajuste a URL para onde você deseja redirecionar
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'create_user.html', {'form': form})

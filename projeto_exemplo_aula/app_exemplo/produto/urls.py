@@ -11,4 +11,5 @@ urlpatterns = [
     path('produto/<int:pk>/excluir/', views.produto_delete, name='produto_delete'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    path('create-user/', views.create_user, name='create_user'),
 ]
