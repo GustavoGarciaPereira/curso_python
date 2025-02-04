@@ -1,4 +1,3 @@
----
 
 ## **Revisão Geral - Python, POO, MySQL e Frameworks Web**
 
