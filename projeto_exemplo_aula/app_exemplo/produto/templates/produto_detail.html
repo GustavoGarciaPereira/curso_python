@@ -14,6 +14,20 @@
         <p>Preço: R$ {{ produto.preco }}</p>
         <p>Estoque: {{ produto.estoque }}</p>
         <p>Descrição: {{ produto.descricao }}</p>
+
+        <!-- Exibir as tags -->
+        <div class="tags">
+            <h3>Tags:</h3>
+            {% if produto.tags %}
+                <ul>
+                    {% for tag in produto.tags %}
+                        <li>#{{ tag }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Sem tags disponíveis.</p>
+            {% endif %}
+        </div>
         <a href="{% url 'produto_list' %}">Voltar</a>
     </div>
 </body>

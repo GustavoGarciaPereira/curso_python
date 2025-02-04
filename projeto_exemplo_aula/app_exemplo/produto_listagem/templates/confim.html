@@ -1,0 +1,10 @@
+
+        <h1>Confirmar Desativação</h1>
+        <p>Você tem certeza que deseja desativar o produto <strong>{{ produto.nome }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Sim, Desativar</button>
+        </form>
+        <a href="{% url 'nao_ativo' %}" class="btn-cancel">Cancelar</a>
+    </div>
+

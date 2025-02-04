@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            max-width: 500px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button, a {
+            display: inline-block;
+            padding: 12px;
+            background-color: #45a049;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.2s;
+            width: calc(48%); /* Espaço para dois botões alinhados */
+            margin: 5px 1%; /* Espaçamento lateral */
+            box-sizing: border-box;
+        }
+
+        button:hover, a:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+        button:focus, a:focus {
+            outline: none;
+            box-shadow: 0 0 4px #0056b3;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Adiciona uma transição suave ao formulário */
+        form {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% if user.username %}
+            <h1>Create a New Post <p>Bem-vindo, {{ user.username }}!</p></h1>
+        {% else %}
+            <h1>Create a New Post</h1>
+        {% endif %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-group">
+            <button type="submit">Create Post </button>
+            <a href="{% url 'post_list' %}">Back to Post List</a>
+        </div>
+    </form>
+</body>
+</html>

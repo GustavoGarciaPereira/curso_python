@@ -47,3 +47,20 @@ a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+.tags {
+    margin-top: 20px;
+}
+
+.tags ul {
+    padding: 0;
+    list-style: none;
+}
+
+.tags li {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+}

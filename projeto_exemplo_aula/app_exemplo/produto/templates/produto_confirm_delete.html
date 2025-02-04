@@ -5,16 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excluir Produto</title>
+    <title>Desativar Produto | Delete</title>
     <link rel="stylesheet" href="{% static 'delete.css' %}">
 </head>
 <body>
-    <h1>Confirmar Exclusão</h1>
-    <p>Você tem certeza que deseja excluir o produto <strong>{{ produto.nome }}</strong>?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Sim, Excluir</button>
-    </form>
-    <a href="{% url 'produto_list' %}">Cancelar</a>
+    <div class="delete-container">
+        <h1>Confirmar Desativação</h1>
+        <p>Você tem certeza que deseja desativar o produto <strong>{{ produto.nome }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Sim, Desativar</button>
+        </form>
+        <a href="{% url 'produto_list' %}" class="btn-cancel">Cancelar</a>
+    </div>
 </body>
 </html>

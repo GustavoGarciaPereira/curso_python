@@ -1,28 +1,7 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-# from flask_swagger import swagger
-# from flask_swagger_ui import get_swaggerui_blueprint
-# from flask_cors import CORS  
 
 app = Flask(__name__)
-# CORS(app)
-# # Swagger UI configuration
-# SWAGGER_URL = '/swagger'  # URL for accessing Swagger UI
-# API_URL = '/spec'         # URL for Swagger specification
-# swaggerui_blueprint = get_swaggerui_blueprint(
-#     SWAGGER_URL,
-#     API_URL,
-#     config={
-#         'app_name': "My API"
-#     }
-# )
-# app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
-# @app.route("/spec")
-# def spec():
-#     swag = swagger(app)
-#     swag['info']['version'] = "1.0"
-#     swag['info']['title'] = "My API"
-#     return jsonify(swag)
 import mysql.connector
 
 dic_senac = {
@@ -51,10 +30,10 @@ def main():
     Home route
     ---
     responses:
-      200:
+        200:
         description: Retorna uma mensagem de boas-vindas.
     """
-    return redirect(url_for("liste_imc"))
+    return redirect(url_for("forms"))
 
 @app.route("/<int:numero1>/<int:numero2>/<string:sinal>")
 def calculadora(numero1, numero2, sinal):

@@ -11,21 +11,22 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print("gustavo", config('NOME',default='fulano'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3-f3mm@72sz#*&bo4sb0=j_vc7nych_sn0#zxic0&m**)vg($3'
-
+SECRET_KEY = config('SECRET_KEY')
+print("SECRET_KEY", SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'user',
     'produto',
     'django_extensions',
+    'produto_listagem',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -83,6 +86,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Usando o backend MySQL
+#         'NAME': 'produtos',                  # Substitua pelo nome do seu banco de dados
+#         'USER': 'root',                       # Usuário do MySQL
+#         'PASSWORD': 'senacrs',                       # Senha do MySQL (adicione a senha se existir)
+#         'HOST': '127.0.0.1',                  # Endereço do servidor MySQL
+#         'PORT': '3306',                       # Porta padrão do MySQL
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -124,3 +138,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+LOGIN_URL = 'login'  # Página para onde usuários não logados serão redirecionados
+LOGIN_REDIRECT_URL = 'produto_list'  # Página após login bem-sucedido
+LOGOUT_REDIRECT_URL = 'login'  # Página após logout

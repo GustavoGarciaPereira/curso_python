@@ -1,0 +1,7 @@
+
+<ul>
+    {% for produto in nao_ativo %}
+        <li>{{ produto }} | <a href="{% url 'reativar' produto.pk %}">Excluir</a> </li>
+    {% endfor %}
+
+</ul>
