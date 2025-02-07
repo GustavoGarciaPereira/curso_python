@@ -1,0 +1,33 @@
+<h1>Resultados: {{ enquete.pergunta }}</h1>
+<ul>
+    {% for opcao in enquete.opcoes.all %}
+        <li>{{ opcao.texto_opcao }}: {{ opcao.votos }} voto{{ opcao.votos|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+<!-- Gráfico com Chart.js -->
+<canvas id="graficoResultados" width="400" height="200"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('graficoResultados').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{% for opcao in enquete.opcoes.all %}'{{ opcao.texto_opcao }}',{% endfor %}],
+            datasets: [{
+                label: 'Votos',
+                data: [{% for opcao in enquete.opcoes.all %}{{ opcao.votos }},{% endfor %}],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<a href="{% url 'enquetes:lista' %}">Voltar para a lista</a>
