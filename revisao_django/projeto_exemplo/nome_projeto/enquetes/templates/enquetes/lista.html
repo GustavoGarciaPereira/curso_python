@@ -1,0 +1,8 @@
+<h1>Enquetes Disponíveis</h1>
+<ul>
+    {% for enquete in enquetes %}
+        <li>
+            <a href="{% url 'enquetes:detalhes' enquete.id %}">{{ enquete.pergunta }}</a>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,10 @@
+<h1>{{ enquete.pergunta }}</h1>
+<form method="post" action="{% url 'enquetes:votar' enquete.id %}">
+    {% csrf_token %}
+    {% for opcao in enquete.opcoes.all %}
+        <input type="radio" name="opcao" id="opcao{{ forloop.counter }}" value="{{ opcao.id }}">
+        <label for="opcao{{ forloop.counter }}">{{ opcao.texto_opcao }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Votar">
+</form>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
