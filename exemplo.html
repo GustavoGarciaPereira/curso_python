@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>RAG com Perplexity AI</title>
+</head>
+<body>
+    <h1>Faça sua Pergunta</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="user_query">Sua Pergunta:</label><br>
+        <textarea id="user_query" name="user_query" rows="5" cols="70"></textarea><br><br>
+        <input type="submit" value="Obter Resposta">
+    </form>
+
+    {% if resposta_rag %}
+        <h2>Resposta do RAG:</h2>
+        <p style="font-weight: bold;">Pergunta:</p>
+        <p>{{ pergunta }}</p>
+        <p style="font-weight: bold;">Resposta:</p>
+        <p>{{ resposta_rag|linebreaksbr }}</p>
+    {% endif %}
+
+</body>
+</html>
