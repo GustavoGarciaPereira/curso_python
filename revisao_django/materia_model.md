@@ -104,6 +104,25 @@ Estrutura básica de templates:
 </html>
 ```
 
+
+### **confirmar_exclusao.html (Template Base)**
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Confirmar Exclusão</h1>
+    <p>Você tem certeza que deseja excluir <strong>{{ pessoa.nome }} {{ pessoa.sobrenome }}</strong>?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim, excluir</button>
+        <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
+```
+
 ### **lista.html (Lista de Pessoas)**
 ```html
 {% extends 'base.html' %}
