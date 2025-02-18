@@ -150,7 +150,77 @@ Estrutura básica de templates:
 <a href="{% url 'excluir_pessoa' pessoa.id %}" class="btn btn-danger">Excluir</a>
 {% endblock %}
 ```
+### **versão 1**
+```html
+{% extends 'base.html' %}
 
+{% block content %}
+<h1>{{ titulo }}</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<a href="{% url 'lista_pessoas' %}" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}
+```
+### **versão 2**
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">{{ titulo }}</h1>
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.nome.label_tag }}
+            {{ form.nome }}
+            <div class="invalid-feedback">
+                Por favor, insira um nome válido.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.sobrenome.label_tag }}
+            {{ form.sobrenome }}
+            <div class="invalid-feedback">
+                Por favor, insira um sobrenome válido.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.data_aniversario.label_tag }}
+            {{ form.data_aniversario }}
+            <div class="invalid-feedback">
+                Por favor, insira uma data de aniversário válida.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.url_portifolio.label_tag }}
+            {{ form.url_portifolio }}
+            <div class="invalid-feedback">
+                Por favor, insira uma URL válida.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.imagem.label_tag }}
+            {{ form.imagem }}
+            <div class="invalid-feedback">
+                Por favor, selecione uma imagem válida.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.habilidades.label_tag }}
+            {{ form.habilidades }}
+            <div class="invalid-feedback">
+                Por favor, selecione pelo menos uma habilidade.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>
+{% endblock %}
+```
 ---
 
 ## **4. URLs**
@@ -169,7 +239,19 @@ urlpatterns = [
     path('buscar/', views.buscar_pessoa, name='buscar_pessoa'),
 ]
 ```
+###
+```python
+# Configurações para arquivos de mídia (upload de usuários)
+MEDIA_URL = '/media/'  # URL pública para acessar os arquivos
+MEDIA_ROOT = BASE_DIR / 'media'  # Caminho no sistema de arquivos para salvar os arquivos
 
+
+
+from django.conf.urls.static import static
+from exemplo import settings
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
 ---
 
 ## **5. Funcionalidades Adicionais**
