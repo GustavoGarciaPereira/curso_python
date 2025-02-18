@@ -153,7 +153,3 @@
 - "Como usar RabbitMQ em vez do Redis?"  
 - "Como debugar tarefas falhas?"  
 - "Como escalar workers em produção?"  
-
---- 
-
-**Pronto!** Com esta aula, os alunos poderão integrar o Celery em projetos Django para tarefas assíncronas e agendadas, melhorando a eficiência de suas aplicações.
