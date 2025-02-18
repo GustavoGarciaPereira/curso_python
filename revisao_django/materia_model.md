@@ -194,3 +194,6 @@ urlpatterns = [
 1. **Formulário Interativo**: Peça aos alunos para adicionar um campo de "bio" usando `models.TextField`.
 2. **API REST**: Integre com Django REST Framework para criar uma API.
 3. **Filtros Avançados**: Implemente filtros por idade ou habilidades usando `django-filter`.
+
+- criar e ver a imagem como salvar
+
