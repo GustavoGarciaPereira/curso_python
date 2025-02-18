@@ -15,11 +15,11 @@ def rag_function_perplexity(user_query, documents, perplexity_api_key):
 
     Returns:
         str: A resposta gerada pelo modelo de linguagem da Perplexity AI, baseada nos documentos relevantes.
-        Retorna uma mensagem de erro em caso de falha na geração da resposta.
+               Retorna uma mensagem de erro em caso de falha na geração da resposta.
     """
     try:
         # 1. Embedding dos Documentos e da Query
-        model = SentenceTransformer('all-MiniLM-L6-v2') # Modelo Sentence Transformer para embeddings multilingue
+        model = SentenceTransformer('distilbert-multilingual-nli-stsb-quora-dir') # Modelo Sentence Transformer para embeddings multilingue
 
         document_embeddings = model.encode(documents) # Cria embeddings para cada documento
         query_embedding = model.encode(user_query) # Cria embedding para a pergunta do usuário
@@ -46,14 +46,14 @@ def rag_function_perplexity(user_query, documents, perplexity_api_key):
             "messages": [
                 {
                     "role": "system",
-                    "content": "Sou programador python." # Instrução de sistema (opcional)
+                    "content": "Be precise and concise." # Instrução de sistema (opcional)
                 },
                 {
                     "role": "user",
                     "content": prompt_content # Usa o prompt formatado com contexto e pergunta
                 }
             ],
-            "max_tokens": 500, # Aumentei o max_tokens para permitir respostas mais longas se necessário
+             "max_tokens": 500, # Aumentei o max_tokens para permitir respostas mais longas se necessário
             "temperature": 0.2, # Mantive a temperatura baixa para respostas mais determinísticas
             "top_p": 0.9, # Mantive o top_p
         })
@@ -83,10 +83,10 @@ if __name__ == '__main__':
         "Foi nomeada em homenagem ao engenheiro Gustave Eiffel, cuja empresa projetou e construiu a torre.",
         "Construída em 1889 como entrada para a Feira Mundial de 1889, foi inicialmente criticada por alguns artistas e intelectuais franceses pelo seu design, mas tornou-se um ícone cultural global da França e uma das estruturas mais reconhecidas do mundo."
     ]
-    pergunta_usuario = "Onde?"
+    pergunta_usuario = "Quando a Torre Eiffel foi construída e quem a projetou?"
 
     # **IMPORTANTE:** Substitua 'SUA_CHAVE_API_PERPLEXITY' pela sua chave de API real da Perplexity AI
-    api_key_perplexity = "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" # <----------------------- Substitua aqui!
+    api_key_perplexity = "SUA_CHAVE_API_PERPLEXITY" # <----------------------- Substitua aqui!
 
     resposta_rag = rag_function_perplexity(pergunta_usuario, documentos_exemplo, api_key_perplexity)
     print(f"Pergunta do Usuário: {pergunta_usuario}")
