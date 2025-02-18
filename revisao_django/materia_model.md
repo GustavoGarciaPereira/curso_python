@@ -141,13 +141,17 @@ Estrutura básica de templates:
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ pessoa.nome }} {{ pessoa.sobrenome }}</h1>
-<p>Idade: {{ pessoa.idade }}</p>
-<p>Portfólio: <a href="{{ pessoa.url_portfolio }}" target="_blank">{{ pessoa.url_portfolio }}</a></p>
-<p>Habilidades: {% for habilidade in pessoa.habilidades.all %}{{ habilidade }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-<img src="{{ pessoa.imagem.url }}" class="img-fluid" alt="{{ pessoa.nome }}">
-<a href="{% url 'editar_pessoa' pessoa.id %}" class="btn btn-warning">Editar</a>
-<a href="{% url 'excluir_pessoa' pessoa.id %}" class="btn btn-danger">Excluir</a>
+    <h1>{{ pessoa.nome }} {{ pessoa.sobrenome }}</h1>
+    <p>Idade: {{ pessoa.idade }}</p>
+    <p>Portfólio: <a href="{{ pessoa.url_portifolio }}" target="_blank">{{ pessoa.url_portifolio }}</a></p>
+    <p>Habilidades: {% for habilidade in pessoa.habilidades.all %}{{ habilidade }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    
+    {% if pessoa.imagem  %}
+        <img src="{{ pessoa.imagem.url }}" class="img-fluid" alt="{{ pessoa.nome }}">
+    {% endif %}
+    <a href="{% url 'editar_pessoa' pessoa.id %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'excluir_pessoa' pessoa.id %}" class="btn btn-danger">Excluir</a>
+    <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary">Voltar</a>
 {% endblock %}
 ```
 ### **versão 1**
