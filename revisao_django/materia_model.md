@@ -162,7 +162,7 @@ Estrutura básica de templates:
 {% block content %}
     <h1>{{ pessoa.nome }} {{ pessoa.sobrenome }}</h1>
     <p>Idade: {{ pessoa.idade }}</p>
-    <p>Portfólio: <a href="{{ pessoa.url_portifolio }}" target="_blank">{{ pessoa.url_portifolio }}</a></p>
+    <p>Portfólio: <a href="{{ pessoa.url_portfolio }}" target="_blank">{{ pessoa.url_portfolio }}</a></p>
     <p>Habilidades: {% for habilidade in pessoa.habilidades.all %}{{ habilidade }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
     
     {% if pessoa.imagem  %}
